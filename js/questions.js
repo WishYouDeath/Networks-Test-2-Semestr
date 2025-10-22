@@ -565,6 +565,230 @@ const sampleQuestions = [
             { text: '802.1D', correct: true },
             { text: 'Rapid PVST', correct: false }
         ]
+    },
+    {
+        id: 51,
+        type: 'multiple',
+        text: 'Какие два режима группы каналов переводят интерфейс в состояние согласования с помощью PAgP? (Выберите два варианта)',
+        options: [
+            { text: 'Passive', correct: false },
+            { text: 'Auto', correct: true },
+            { text: 'Active', correct: false },
+            { text: 'Desirable', correct: true },
+            { text: 'On', correct: false }
+        ]
+    },
+    {
+        id: 52,
+        type: 'single',
+        text: 'Какой непроприетарный протокол обеспечивает резервирование маршрутизатора для группы маршрутизаторов, поддерживающих локальные сети IPv4?',
+        options: [
+            { text: 'GLBP', correct: false },
+            { text: 'VRRPv2', correct: true },
+            { text: 'SLB', correct: false },
+            { text: 'HSRP', correct: false }
+        ]
+    },
+    {
+        id: 53,
+        type: 'single',
+        text: 'Какова цель HSRP?',
+        options: [
+            { text: 'Он не позволяет неавторизованному коммутатору стать корнем STP', correct: false },
+            { text: 'Он позволяет порту доступа немедленно перейти в состояние пересылки', correct: false },
+            { text: 'Он предотвращает подключение вредоносных хостов к магистральным портам', correct: false },
+            { text: 'Он обеспечивает непрерывное сетевое соединение при сбое маршрутизатора', correct: true }
+        ]
+    },
+    {
+        id: 54,
+        type: 'single',
+        text: 'Какое утверждение описывает реализацию EtherChannel?',
+        options: [
+            { text: 'PAgP нельзя использовать в сочетании с EtherChannel', correct: false },
+            { text: 'EtherChannel может поддерживать максимум десять отдельных каналов', correct: false },
+            { text: 'Trunk-порт может быть частью связки EtherChannel', correct: true },
+            { text: 'EtherChannel работает только на уровне 2', correct: false }
+        ]
+    },
+    {
+        id: 55,
+        type: 'multiple',
+        text: 'Какие два протокола используются для реализации EtherChannel? (Выберите два варианта)',
+        options: [
+            { text: 'Link Aggregation Control Protocol', correct: true },
+            { text: 'Spanning Tree Protocol', correct: false },
+            { text: 'Rapid Spanning Tree Protocol', correct: false },
+            { text: 'Cisco Discovery Protocol', correct: false },
+            { text: 'Port Aggregation Protocol', correct: true }
+        ]
+    },
+    {
+        id: 56,
+        type: 'single',
+        text: 'Какую наилучшую практику следует использовать перед началом реализации EtherChannel?',
+        options: [
+            { text: 'Назначать используемые интерфейсы в управляющую VLAN', correct: false },
+            { text: 'Назначать используемые интерфейсы неиспользуемой VLAN', correct: false },
+            { text: 'Включать каждый из используемых интерфейсов', correct: false },
+            { text: 'Назначать используемые интерфейсы сети в VLAN 1', correct: false },
+            { text: 'Выключать каждый из используемых интерфейсов', correct: true }
+        ]
+    },
+    {
+        id: 57,
+        type: 'matching',
+        text: 'Сопоставьте описание с правильной командой. (Не все варианты используются)',
+        pairs: [
+            { question: 'Эта команда используется для проверки того, какие port-channel настроены на коммутаторе', answer: 'show etherchannel summary' },
+            { question: 'Эта команда показывает информацию о состоянии порта, задействованного в Etherchannel', answer: 'show interfaces fa0/2 etherchannel' },
+            { question: 'Эта команда показывает список портов, участвующих в port-channel, и время, прошедшее с момента объединения портов', answer: 'show etherchannel port-channel' },
+            { question: 'Эта команда показывает информацию о надежности port-channel', answer: 'show interfaces port-channel' }
+        ],
+        extraAnswers: [
+            'show etherchannel load-balancing',
+            'show lacp neighbors',
+            'show pagp neighbors',
+            'show interfaces trunk',
+        ]
+    },
+    {
+        id: 58,
+        type: 'single',
+        text: 'Какое сочетание режимов PAgP установит EtherChannel?',
+        options: [
+            { text: 'Коммутатор 1 настроен в desirable, коммутатор 2 настроен в desirable', correct: true },
+            { text: 'Коммутатор 1 настроен в auto, коммутатор 2 настроен в on', correct: false },
+            { text: 'Коммутатор 1 настроен в auto, коммутатор 2 настроен в auto', correct: false },
+            { text: 'Коммутатор 1 настроен в on, коммутатор 2 настроен в desirable', correct: false }
+        ]
+    },
+    {
+        id: 59,
+        type: 'multiple',
+        text: 'Какие три параметра должны совпадать, чтобы установить EtherChannel между двумя напрямую подключенными коммутаторами? (Выберите три варианта)',
+        options: [
+            { text: 'Скорость интерфейсов, которые используются для EtherChannel', correct: true },
+            { text: 'Принадлежность к VLAN интерфейсов, которые используются для EtherChannel', correct: true },
+            { text: 'Настройки безопасности портов на интерфейсах, используемых для EtherChannel', correct: false },
+            { text: 'Номера портов, которые используются для EtherChannel', correct: false },
+            { text: 'Доменные имена на коммутаторах', correct: false },
+            { text: 'Дуплексные настройки интерфейсов, которые используются для EtherChannel', correct: true }
+        ]
+    },
+    {
+        id: 60,
+        type: 'single',
+        text: 'Посмотрите на рисунок. Какая технология коммутации позволила бы агрегировать каждый канал коммутатора уровня доступа для обеспечения большой пропускной способности между каждым коммутатором уровня 2 и коммутатором уровня 3?',
+        image: 'images/questions/2-60.jpg',
+        options: [
+            { text: 'PortFast', correct: false },
+            { text: 'HSRP', correct: false },
+            { text: 'EtherChannel', correct: true },
+            { text: 'Trunking', correct: false }
+        ]
+    },
+    {
+        id: 61,
+        type: 'single',
+        text: 'Что необходимо для настройки магистрального EtherChannel между двумя коммутаторами?',
+        options: [
+            { text: 'Участвующим интерфейсам на обоих коммутаторах должен быть назначен один и тот же номер VLAN', correct: false },
+            { text: 'Участвующие интерфейсы должны находиться в одном модуле коммутатора', correct: false },
+            { text: 'Участвующие интерфейсы должны быть физически смежными на коммутаторе', correct: false },
+            { text: 'Разрешенный диапазон VLAN должен быть одинаковым на обоих коммутаторах', correct: true }
+        ]
+    },
+    {
+        id: 62,
+        type: 'single',
+        text: 'На основе вывода команды show etherchannel summary, какое утверждение верно?',
+        image: 'images/questions/2-62.jpg',
+        options: [
+            { text: 'EtherChannel не работает, о чем свидетельствует пустое поле протокола', correct: false },
+            { text: 'Канал EtherChannel используется и функционирует, на что указывают флаги SU и P в выходных данных команды', correct: true },
+            { text: 'EtherChannel является динамическим и использует порты Fa0/10 и Fa0/11 в качестве пассивных портов', correct: false },
+            { text: 'EtherChannel частично функционален, на что указывают флаги P для портов FastEthernet', correct: false }
+        ]
+    },
+    {
+        id: 63,
+        type: 'single',
+        text: 'Администратор настраивает канал EtherChannel между коммутаторами SW1 и SW2 с помощью команды SW1(config-range)# channel-group 1 mode passive. Какую команду необходимо выполнить на SW2, чтобы включить этот EtherChannel?',
+        options: [
+            { text: 'SW2(config-range)# channel-group 1 mode active', correct: true },
+            { text: 'SW2(config-range)# channel-group 1 mode passive', correct: false },
+            { text: 'SW2(config-range)# channel-group 1 mode auto', correct: false },
+            { text: 'SW2(config-range)# channel-group 1 mode desirable', correct: false }
+        ]
+    },
+    {
+        id: 64,
+        type: 'single',
+        text: 'Посмотрите на рисунок. Сетевой администратор настроил маршрутизаторы R1 и R2 как часть группы HSRP 1. После перезагрузки маршрутизаторов пользователь на Host1 пожаловался на отсутствие подключения к интернету. Сетевой администратор выполнил команду show standby brief на обоих маршрутизаторах для проверки работы HSRP. Кроме того, администратор просмотрел таблицу ARP на Host1. Какая запись должна отображаться в таблице ARP на Host1, чтобы получить подключение к интернету?',
+        image: 'images/questions/2-64.jpg',
+        options: [
+            { text: 'Виртуальный IP-адрес и виртуальный MAC-адрес для группы HSRP 1', correct: true },
+            { text: 'Виртуальный IP-адрес группы HSRP 1 и MAC-адрес R1', correct: false },
+            { text: 'IP-адрес и MAC-адрес R1', correct: false },
+            { text: 'Виртуальный IP-адрес группы HSRP 1 и MAC-адрес R2', correct: false }
+        ]
+    },
+    {
+        id: 65,
+        type: 'single',
+        text: 'Посмотрите на рисунок. Между коммутаторами S1 и S2 настроен EtherChannel, но интерфейсы не образуют EtherChannel. В чём может быть проблема?',
+        image: 'images/questions/2-65.jpg',
+        options: [
+            { text: 'На портах коммутатора не были настроены скорость и дуплексный режим', correct: false },
+            { text: 'Номер интерфейса port-channel должен отличаться на каждом коммутаторе', correct: false },
+            { text: 'EtherChannel не был настроен с одинаковым разрешенным диапазоном VLAN на каждом интерфейсе', correct: true },
+            { text: 'Порты коммутатора должны быть настроены как порты доступа, при этом каждый порт должен быть помещён в VLAN', correct: false }
+        ]
+    },
+    {
+        id: 66,
+        type: 'input',
+        text: 'Заполните пробел. В режиме FHRP два или более маршрутизатора представляются как один ___ маршрутизатор.',
+        correctAnswer: 'виртуальный',
+        caseSensitive: false
+    },
+    {
+        id: 67,
+        type: 'single',
+        text: 'Какое утверждение характеризует EtherChannel?',
+        options: [
+            { text: 'Он может объединять смешанные типы каналов 100 Мбит/с и 1 Гбит/с Ethernet', correct: false },
+            { text: 'Он состоит из нескольких параллельных каналов между коммутатором и маршрутизатором', correct: false },
+            { text: 'Он создается путем объединения нескольких физических каналов, которые рассматриваются как один канал между двумя коммутаторами', correct: true },
+            { text: 'Он может объединять максимум 4 физических соединения', correct: false }
+        ]
+    },
+    {
+        id: 68,
+        type: 'single',
+        text: 'На основе вывода команды show etherchannel summary, какое утверждение верно?',
+        image: 'images/questions/2-68.jpg',
+        options: [
+            { text: 'Два порта Gigabit Ethernet используются для формирования EtherChannel', correct: false },
+            { text: 'Для согласования канала EtherChannel использовался собственный протокол Cisco', correct: true },
+            { text: 'EtherChannel работает как на уровне 2, так и на уровне 3', correct: false },
+            { text: 'EtherChannel не работает', correct: false }
+        ]
+    },
+    {
+        id: 69,
+        type: 'multiple',
+        text: 'Посмотрите на рисунок. Сетевой администратор не замечает прироста производительности после настройки EtherChannel. Основываясь на показанном выводе, какие два возможных предположения может сделать сетевой администратор? (Выберите два варианта)',
+        image: 'images/questions/2-69.jpg',
+        options: [
+            { text: 'Связка EtherChannel не работает', correct: true },
+            { text: 'Связка EtherChannel работает', correct: false },
+            { text: 'Были использованы LACP и PAgP для формирования EtherChannel', correct: false },
+            { text: 'Один из портов на S2 был неправильно настроен', correct: true },
+            { text: 'Коммутатор S2 использовал несовместимый режим EtherChannel', correct: false },
+            { text: 'Коммутатор S2 необходимо настроить так, чтобы максимальное количество портов было увеличено', correct: false }
+        ]
     }
 ];
 
