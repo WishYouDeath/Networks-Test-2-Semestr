@@ -301,8 +301,93 @@ h1 {
         width: 100%;
         height: 50px;
     }
-    
+
     .confirm-input-btn {
         width: 100%;
+    }
+
+    /* Стили для matching вопросов */
+    .matching-container {
+        margin: 20px 0;
+    }
+
+    .matching-pair {
+        display: flex;
+        align-items: center;
+        margin: 15px 0;
+        padding: 10px;
+        border-radius: 5px;
+        background-color: #f8f9fa;
+    }
+
+    .matching-question {
+        flex: 1;
+        font-weight: 500;
+        margin-right: 15px;
+    }
+
+    .matching-select {
+        min-width: 200px;
+        padding: 8px 12px;
+        border: 2px solid #ddd;
+        border-radius: 5px;
+        font-size: 14px;
+        background-color: white;
+    }
+
+    .matching-select:disabled {
+        background-color: #f8f9fa;
+        cursor: not-allowed;
+    }
+
+    .matching-correct {
+        background-color: #d4edda;
+        border-color: #c3e6cb;
+    }
+
+    .matching-incorrect {
+        background-color: #f8d7da;
+        border-color: #f5c6cb;
+    }
+
+    .matching-feedback {
+        margin-left: 15px;
+        font-size: 14px;
+        font-weight: 500;
+    }
+
+    .matching-feedback.correct {
+        color: #155724;
+    }
+
+    .matching-feedback.incorrect {
+        color: #721c24;
+    }
+
+    .matching-answers-pool {
+        margin: 15px 0;
+        padding: 15px;
+        background-color: #e9ecef;
+        border-radius: 8px;
+    }
+
+    .matching-answers-title {
+        font-weight: bold;
+        margin-bottom: 10px;
+        color: #495057;
+    }
+
+    .matching-answers-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .matching-answer-item {
+        padding: 5px 10px;
+        background-color: #6c757d;
+        color: white;
+        border-radius: 4px;
+        font-size: 14px;
     }
 }

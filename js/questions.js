@@ -338,8 +338,9 @@ const sampleQuestions = [
             { question: 'Собственная реализация IEEE 802.1w для каждой VLAN', answer: 'Rapid PVST+' },
             { question: 'Быстрое конвергентное усовершенствование IEEE 802.1D', answer: 'RSTP' },
             { question: 'Cisco реализация стандарта IEEE 802.1D', answer: 'PVST+' },
-            { question: 'Стандapт IEEE, сокращающий количество экземпляров STP', answer: 'MSTP' }
-        ]
+            { question: 'Стандарт IEEE, сокращающий количество экземпляров STP', answer: 'MSTP' }
+        ],
+        extraAnswers: ['STP', 'PVST', 'Rapid STP']
     },
     {
         id: 31,

@@ -39,7 +39,7 @@ function initializeQuestionStates() {
             answered: false,
             correct: false,
             firstTry: true,
-            userSelections: []
+            userSelections: question.type === 'matching' ? {} : []
         };
     });
 }
@@ -135,6 +135,10 @@ function generateOptionsHTML(question, questionState) {
             </div>
         `;
     }
+
+    if (question.type === 'matching') {
+        return generateMatchingHTML(question, questionState);
+    }
     
     let optionsHTML = '';
     const inputType = question.type === 'multiple' ? 'checkbox' : 'radio';
@@ -178,6 +182,73 @@ function generateOptionsHTML(question, questionState) {
     return optionsHTML;
 }
 
+// Новая функция для генерации HTML matching вопросов
+function generateMatchingHTML(question, questionState) {
+    const userSelections = userAnswers[question.id] || {};
+    const isDisabled = questionState.answered;
+    
+    // Собираем все возможные ответы
+    const allAnswers = question.pairs.map(pair => pair.answer);
+    if (question.extraAnswers) {
+        allAnswers.push(...question.extraAnswers);
+    }
+    
+    let matchingHTML = `
+        <div class="matching-answers-pool">
+            <div class="matching-answers-title">Доступные варианты:</div>
+            <div class="matching-answers-list">
+                ${allAnswers.map(answer => 
+                    `<div class="matching-answer-item">${answer}</div>`
+                ).join('')}
+            </div>
+        </div>
+        <div class="matching-container">
+    `;
+    
+    question.pairs.forEach((pair, index) => {
+        const userAnswer = userSelections[index] || '';
+        let selectClass = '';
+        let feedback = '';
+        
+        if (questionState.answered) {
+            if (userAnswer === pair.answer) {
+                selectClass = 'matching-correct';
+            } else {
+                selectClass = 'matching-incorrect';
+                feedback = `<span class="matching-feedback incorrect">Правильно: ${pair.answer}</span>`;
+            }
+        }
+        
+        matchingHTML += `
+            <div class="matching-pair">
+                <div class="matching-question">${pair.question}</div>
+                <select class="matching-select ${selectClass}" 
+                        data-question="${question.id}" 
+                        data-pair="${index}"
+                        ${isDisabled ? 'disabled' : ''}>
+                    <option value="">-- Выберите ответ --</option>
+                    ${allAnswers.map(answer => 
+                        `<option value="${answer}" ${userAnswer === answer ? 'selected' : ''}>${answer}</option>`
+                    ).join('')}
+                </select>
+                ${feedback}
+            </div>
+        `;
+    });
+    
+    matchingHTML += `</div>`;
+    
+    if (!questionState.answered) {
+        matchingHTML += `
+            <button class="btn btn-primary confirm-matching-btn" data-question="${question.id}" style="margin-top: 15px;">
+                Проверить сопоставление
+            </button>
+        `;
+    }
+    
+    return matchingHTML;
+}
+
 function addOptionListeners() {
     const options = document.querySelectorAll('.option input:not(:disabled)');
     options.forEach(option => {
@@ -199,6 +270,71 @@ function addOptionListeners() {
     confirmInputButtons.forEach(button => {
         button.addEventListener('click', handleConfirmInputClick);
     });
+    // Обработчики для matching select
+    const matchingSelects = document.querySelectorAll('.matching-select:not(:disabled)');
+    matchingSelects.forEach(select => {
+        select.addEventListener('change', handleMatchingChange);
+    });
+    
+    // Обработчики для кнопок подтверждения matching
+    const confirmMatchingButtons = document.querySelectorAll('.confirm-matching-btn');
+    confirmMatchingButtons.forEach(button => {
+        button.addEventListener('click', handleConfirmMatchingClick);
+    });
+}
+
+// Обработчик изменения выбора в matching
+function handleMatchingChange(event) {
+    const select = event.target;
+    const questionId = parseInt(select.dataset.question);
+    const pairIndex = parseInt(select.dataset.pair);
+    const selectedValue = select.value;
+    
+    if (!userAnswers[questionId]) {
+        userAnswers[questionId] = {};
+    }
+    
+    userAnswers[questionId][pairIndex] = selectedValue;
+    
+    updateProgressBar();
+    updateStats();
+}
+
+// Обработчик подтверждения matching
+function handleConfirmMatchingClick(event) {
+    const questionId = parseInt(event.target.dataset.question);
+    checkMatchingAnswer(questionId);
+}
+
+// Функция проверки matching ответов
+function checkMatchingAnswer(questionId) {
+    const question = questions.find(q => q.id === questionId);
+    const userSelections = userAnswers[questionId] || {};
+    const questionState = questionStates[questionId];
+    
+    if (questionState.answered) return;
+    
+    // Проверяем, все ли пары заполнены
+    const allFilled = question.pairs.every((_, index) => userSelections[index]);
+    if (!allFilled) {
+        alert('Пожалуйста, сопоставьте все элементы перед проверкой.');
+        return;
+    }
+    
+    // Проверяем правильность ответов
+    let allCorrect = true;
+    question.pairs.forEach((pair, index) => {
+        if (userSelections[index] !== pair.answer) {
+            allCorrect = false;
+        }
+    });
+    
+    questionState.answered = true;
+    questionState.correct = allCorrect;
+    questionState.firstTry = allCorrect;
+    
+    displayQuestions();
+    updateStats();
 }
 
 function handleInputChange(event) {
