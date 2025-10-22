@@ -437,6 +437,134 @@ const sampleQuestions = [
             { text: 'Широковещательные запросы ARP возвращаются на отправителя', correct: false },
             { text: 'Новый трафик отбрасывается коммутатором, поскольку он не может быть обработан', correct: true }
         ]
+    },
+    {
+        id: 40,
+        type: 'single',
+        text: 'Какая функция коммутатора Cisco гарантирует, что сконфигурированные магистральные порты коммутатора не будут создавать кольцо второго уровня, если порт ошибочно подключен к другому коммутатору?',
+        options: [
+            { text: 'PVST+', correct: false },
+            { text: 'BPDU guard', correct: true },
+            { text: 'PortFast', correct: false },
+            { text: 'Extended system ID', correct: false }
+        ]
+    },
+    {
+        id: 41,
+        type: 'single',
+        text: 'Посмотрите на рисунок. Какой магистральный канал не будет пересылать трафик после схождения STP?',
+        image: 'images/questions/2-41.jpg',
+        options: [
+            { text: 'Trunk 1', correct: false },
+            { text: 'Trunk 2', correct: true },
+            { text: 'Trunk 3', correct: false },
+            { text: 'Trunk 4', correct: false }
+        ]
+    },
+    {
+        id: 42,
+        type: 'single',
+        text: 'Какая дополнительная информация содержится в 12-битном расширенном идентификаторе BPDU?',
+        options: [
+            { text: 'MAC адрес', correct: false },
+            { text: 'Идентификатор VLAN', correct: true },
+            { text: 'IP адрес', correct: false },
+            { text: 'Идентификатор порта', correct: false }
+        ]
+    },
+    {
+        id: 43,
+        type: 'multiple',
+        text: 'Какие три компонента используются совместно для формирования идентификатора моста?',
+        options: [
+            { text: 'Идентификатор порта', correct: false },
+            { text: 'Приоритет моста', correct: true },
+            { text: 'Стоимость', correct: false },
+            { text: 'IP-адрес', correct: false },
+            { text: 'MAC-адрес', correct: true },
+            { text: 'Расширенный системный идентификатор', correct: true }
+        ]
+    },
+    {
+        id: 44,
+        type: 'single',
+        text: 'Какой протокол обеспечивает до 16 экземпляров RSTP, объединяет множество сетей VLAN с одинаковой физической и логической топологией в общий экземпляр RSTP и поддерживает PortFast, защиту от несанкционированных BPDU и корней, фильтрацию BPDU и защиту от петель?',
+        options: [
+            { text: 'Rapid PVST+', correct: false },
+            { text: 'STP', correct: false },
+            { text: 'PVST+', correct: false },
+            { text: 'MST', correct: true }
+        ]
+    },
+    {
+        id: 45,
+        type: 'single',
+        text: 'Посмотрите на рисунок. Какова роль коммутатора S3?',
+        image: 'images/questions/2-45.jpg',
+        options: [
+            { text: 'Enabled bridge', correct: false },
+            { text: 'Root bridge', correct: true },
+            { text: 'Designated switch', correct: false },
+            { text: 'Bridge', correct: false }
+        ]
+    },
+    {
+        id: 46,
+        type: 'multiple',
+        text: 'Чтобы получить обзор состояния связующего дерева коммутируемой сети, сетевой инженер вводит на коммутаторе команду show spanning-tree. Какие два элемента информации будут отображаться этой командой? (Выберите два варианта)',
+        options: [
+            { text: 'Количество широковещательных сообщений, полученных на каждом корневом порту', correct: false },
+            { text: 'Роль портов во всех VLAN', correct: true },
+            { text: 'IP-адрес интерфейса VLAN управления', correct: false },
+            { text: 'BID корневого коммутатора', correct: true },
+            { text: 'Статус портов соседних коммутаторов', correct: false }
+        ]
+    },
+    {
+        id: 47,
+        type: 'multiple',
+        text: 'Какие два типа протоколов связующего дерева могут создавать неоптимальные потоки трафика, поскольку они предполагают наличие только одного экземпляра связующего дерева для всей сети? (Выберите два варианта)',
+        options: [
+            { text: 'MSTP', correct: false },
+            { text: 'RSTP', correct: true },
+            { text: 'PVST+', correct: false },
+            { text: 'STP', correct: true },
+            { text: 'Rapid PVST+', correct: false }
+        ]
+    },
+    {
+        id: 48,
+        type: 'single',
+        text: 'Какой тип порта используется между коммутаторами в стекируемом коммутаторе?',
+        options: [
+            { text: 'edge', correct: false },
+            { text: 'root', correct: false },
+            { text: 'designated', correct: false },
+            { text: 'StackWise', correct: true }
+        ]
+    },
+    {
+        id: 49,
+        type: 'multiple',
+        text: 'В каких двух состояниях портов коммутатор запоминает MAC-адреса и обрабатывает BPDU в сети PVST? (Выберите два варианта)',
+        options: [
+            { text: 'blocking', correct: false },
+            { text: 'listening', correct: false },
+            { text: 'disabled', correct: false },
+            { text: 'learning', correct: true },
+            { text: 'forwarding', correct: true }
+        ]
+    },
+    {
+        id: 50,
+        type: 'single',
+        text: 'Какой стандарт связующего дерева поддерживает только один корневой мост, чтобы трафик из всех виртуальных локальных сетей проходил по одному и тому же пути?',
+        options: [
+            { text: 'PVST+', correct: false },
+            { text: 'MST', correct: false },
+            { text: '802.1D', correct: true },
+            { text: 'Rapid PVST', correct: false }
+        ]
     }
 ];
 
