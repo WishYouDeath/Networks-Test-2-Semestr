@@ -187,23 +187,16 @@ function generateMatchingHTML(question, questionState) {
     const userSelections = userAnswers[question.id] || {};
     const isDisabled = questionState.answered;
     
-    // Собираем все возможные ответы
+    // Получаем все возможные ответы
     const allAnswers = question.pairs.map(pair => pair.answer);
     if (question.extraAnswers) {
         allAnswers.push(...question.extraAnswers);
     }
     
-    let matchingHTML = `
-        <div class="matching-answers-pool">
-            <div class="matching-answers-title">Доступные варианты:</div>
-            <div class="matching-answers-list">
-                ${allAnswers.map(answer => 
-                    `<div class="matching-answer-item">${answer}</div>`
-                ).join('')}
-            </div>
-        </div>
-        <div class="matching-container">
-    `;
+    // Получаем уже использованные ответы
+    const usedAnswers = Object.values(userSelections).filter(answer => answer);
+    
+    let matchingHTML = '<div class="matching-container">';
     
     question.pairs.forEach((pair, index) => {
         const userAnswer = userSelections[index] || '';
@@ -215,9 +208,24 @@ function generateMatchingHTML(question, questionState) {
                 selectClass = 'matching-correct';
             } else {
                 selectClass = 'matching-incorrect';
-                feedback = `<span class="matching-feedback incorrect">Правильно: ${pair.answer}</span>`;
+                feedback = `<span class="matching-feedback incorrect"><strong>Правильно: ${pair.answer}</strong></span>`;
             }
         }
+        
+        // Формируем опции для select
+        let optionsHTML = '<option value="">-- Выберите ответ --</option>';
+        
+        allAnswers.forEach(answer => {
+            // Показываем ответ только если:
+            // 1. Он выбран для этого вопроса, ИЛИ
+            // 2. Он еще не использован в других вопросах
+            const isUsed = usedAnswers.includes(answer) && answer !== userAnswer;
+            const isSelected = userAnswer === answer;
+            
+            if (!isUsed || isSelected) {
+                optionsHTML += `<option value="${answer}" ${isSelected ? 'selected' : ''}>${answer}</option>`;
+            }
+        });
         
         matchingHTML += `
             <div class="matching-pair">
@@ -226,10 +234,7 @@ function generateMatchingHTML(question, questionState) {
                         data-question="${question.id}" 
                         data-pair="${index}"
                         ${isDisabled ? 'disabled' : ''}>
-                    <option value="">-- Выберите ответ --</option>
-                    ${allAnswers.map(answer => 
-                        `<option value="${answer}" ${userAnswer === answer ? 'selected' : ''}>${answer}</option>`
-                    ).join('')}
+                    ${optionsHTML}
                 </select>
                 ${feedback}
             </div>
@@ -294,7 +299,11 @@ function handleMatchingChange(event) {
         userAnswers[questionId] = {};
     }
     
+    // Сохраняем выбранное значение
     userAnswers[questionId][pairIndex] = selectedValue;
+    
+    // Немедленно перерисовываем вопрос, чтобы обновить доступные опции
+    displayQuestions();
     
     updateProgressBar();
     updateStats();
