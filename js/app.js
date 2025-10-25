@@ -1,3 +1,12 @@
+function shuffleArray(array) {
+    const newArray = [...array];
+    for (let i = newArray.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+    }
+    return newArray;
+}
+
 let questions = [...sampleQuestions];
 let userAnswers = {};
 let questionStates = {};
@@ -35,12 +44,29 @@ function initializeEventListeners() {
 
 function initializeQuestionStates() {
     questions.forEach(question => {
-        questionStates[question.id] = {
-            answered: false,
-            correct: false,
-            firstTry: true,
-            userSelections: question.type === 'matching' ? {} : []
-        };
+        if (question.type === 'matching') {
+            // Создаем перемешанный порядок ответов для этого вопроса
+            const allAnswers = question.pairs.map(pair => pair.answer);
+            if (question.extraAnswers) {
+                allAnswers.push(...question.extraAnswers);
+            }
+            const shuffledAnswers = shuffleArray(allAnswers);
+            
+            questionStates[question.id] = {
+                answered: false,
+                correct: false,
+                firstTry: true,
+                userSelections: {},
+                shuffledAnswers: shuffledAnswers // Сохраняем перемешанный порядок
+            };
+        } else {
+            questionStates[question.id] = {
+                answered: false,
+                correct: false,
+                firstTry: true,
+                userSelections: question.type === 'matching' ? {} : []
+            };
+        }
     });
 }
 
@@ -187,11 +213,9 @@ function generateMatchingHTML(question, questionState) {
     const userSelections = userAnswers[question.id] || {};
     const isDisabled = questionState.answered;
     
-    // Получаем все возможные ответы
-    const allAnswers = question.pairs.map(pair => pair.answer);
-    if (question.extraAnswers) {
-        allAnswers.push(...question.extraAnswers);
-    }
+    // Используем сохраненный перемешанный порядок ответов
+    const shuffledAnswers = questionState.shuffledAnswers || 
+        [...question.pairs.map(pair => pair.answer), ...(question.extraAnswers || [])];
     
     // Получаем уже использованные ответы
     const usedAnswers = Object.values(userSelections).filter(answer => answer);
@@ -212,10 +236,10 @@ function generateMatchingHTML(question, questionState) {
             }
         }
         
-        // Формируем опции для select
+        // Формируем опции для select из сохраненного перемешанного порядка
         let optionsHTML = '<option value="">-- Выберите ответ --</option>';
         
-        allAnswers.forEach(answer => {
+        shuffledAnswers.forEach(answer => {
             // Показываем ответ только если:
             // 1. Он выбран для этого вопроса, ИЛИ
             // 2. Он еще не использован в других вопросах
