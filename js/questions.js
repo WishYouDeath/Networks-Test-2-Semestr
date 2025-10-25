@@ -789,7 +789,378 @@ const sampleQuestions = [
             { text: 'Коммутатор S2 использовал несовместимый режим EtherChannel', correct: false },
             { text: 'Коммутатор S2 необходимо настроить так, чтобы максимальное количество портов было увеличено', correct: false }
         ]
-    }
+    },
+    {
+        id: 70,
+        type: 'single',
+        text: 'Сетевой администратор хотел бы, чтобы маршрутизатор R1 всегда выбирался активным маршрутизатором для группы HSRP. Какой набор команд обеспечит требуемые результаты?',
+        options: [
+            { text: 'R1(config-if)# ip address 192.168.1.100 255.255.255.0<br>R1(config-if)# standby 1 ip 192.168.1.1<br>R1(config-if)# standby 1 priority 150<br>R1(config-if)# no shutdown', correct: false },
+            { text: 'R1(config-if)# ip address 192.168.1.100 255.255.255.0<br>R1(config-if)# standby 1 ip 192.168.1.1<br>R1(config-if)# standby 1 priority 1<br>R1(config-if)# no shutdown', correct: false },
+            { text: 'R1(config-if)# ip address 192.168.1.100 255.255.255.0<br>R1(config-if)# standby 1 ip 192.168.1.1<br>R1(config-if)# standby 1 priority 255<br>R1(config-if)# standby 1 preempt<br>R1(config-if)# no shutdown', correct: true },
+            { text: 'R1(config-if)# ip address 192.168.1.100 255.255.255.0<br>R1(config-if)# standby 1 ip 192.168.1.1<br>R1(config-if)# no shutdown', correct: false }
+        ]
+    },
+    {
+        id: 71,
+        type: 'single',
+        text: 'Между двумя коммутаторами S1 и S2 был сформирован канал EtherChannel с использованием LACP. При проверки конфигурации, какую комбинацию режимов можно обнаружить?',
+        options: [
+            { text: 'S1-on и S2-active', correct: false },
+            { text: 'S1-on и S2-passive', correct: false },
+            { text: 'S1-passive и S2-active', correct: true },
+            { text: 'S1-passive и S2-passive', correct: false }
+        ]
+    },
+    {
+        id: 72,
+        type: 'single',
+        text: 'Посмотрите на рисунок. Какое утверждение о выводе команды show standby верно?',
+        image: 'images/questions/2-72.jpg',
+        options: [
+            { text: 'В настоящее время маршрутизатор пересылает пакеты', correct: true },
+            { text: 'Этот маршрутизатор находится в отключенном состоянии HSRP, так как его отслеживаемые интерфейсы не работают', correct: false },
+            { text: 'Текущий приоритет этого маршрутизатора равен 120', correct: false },
+            { text: 'Этот маршрутизатор отслеживает два правильно работающих интерфейса', correct: false }
+        ]
+    },
+    {
+        id: 73,
+        type: 'single',
+        text: 'Посмотрите на рисунок. Сетевой администратор ввел команду show etherchannel summary на коммутаторе S1. Какой вывод можно сделать?',
+        image: 'images/questions/2-73.jpg',
+        options: [
+            { text: 'EtherChannel не работает', correct: true },
+            { text: 'Протокол агрегации портов PAgP настроен неправильно', correct: false },
+            { text: 'Порты FastEthernet Fa0/1, Fa0/2 и Fa0/3 не используются в канале EtherChannel', correct: false },
+            { text: 'EtherChannel заблокирован', correct: false }
+        ]
+    },
+    {
+        id: 74,
+        type: 'single',
+        text: 'Какое утверждение является верным относительно создания каналов EtherChannel с помощью PAgP?',
+        options: [
+            { text: 'Увеличивается количество портов, участвующих в связующем дереве', correct: false },
+            { text: 'Для агрегации необходимо использовать четное количество портов (2, 4, 6 и т. д.)', correct: false },
+            { text: 'Требуется полнодуплексный режим на портах', correct: false },
+            { text: 'Для PAgP требуется больше физических каналов, чем для LACP', correct: false },
+            { text: 'Это собственный протокол Cisco', correct: true }
+        ]
+    },
+    {
+    id: 75,
+    type: 'single',
+    text: 'Посмотрите на рисунок. Сетевой инженер устраняет неполадку подключения хоста в локальной сети, использующей FHRP. Какой адрес шлюза IPv4 должен быть настроен на хосте?',
+    image: 'images/questions/2-75.jpg',
+    options: [
+        { text: '192.168.2.2', correct: false },
+        { text: '192.168.2.0', correct: false },
+        { text: '192.168.2.1', correct: false },
+        { text: '192.168.2.100', correct: true }
+    ]
+},
+    {
+        id: 76,
+        type: 'single',
+        text: 'В чем преимущество использования LACP?',
+        options: [
+            { text: 'Обеспечивает смоделированную среду для тестирования агрегации каналов', correct: false },
+            { text: 'Уменьшает вероятность образования петли связующего дерева', correct: false },
+            { text: 'Позволяет автоматически формировать каналы EtherChannel', correct: true },
+            { text: 'Повышает избыточность устройств уровня 3', correct: false },
+            { text: 'Уменьшает количество настроек, необходимых на коммутаторе для EtherChannel', correct: false }
+        ]
+    },
+    {
+    id: 77,
+    type: 'single',
+    text: 'Когда маршрутизатор с поддержкой EIGRP использует пароль для приема маршрутов от других маршрутизаторов с поддержкой EIGRP, какой механизм используется?',
+    options: [
+        { text: 'Алгоритм диффузного обновления', correct: false },
+        { text: 'EIGRP-аутентификация', correct: true },
+        { text: 'Частичные обновления', correct: false },
+        { text: 'Ограниченные обновления', correct: false },
+        { text: 'Надежный транспортный протокол', correct: false }
+    ]
+},
+{
+    id: 78,
+    type: 'multiple',
+    text: 'Какие два протокола маршрутизации классифицируются как протоколы маршрутизации на основе вектора расстояния? (Выберите два варианта)',
+    options: [
+        { text: 'BGP', correct: false },
+        { text: 'IS-IS', correct: false },
+        { text: 'RIP', correct: true },
+        { text: 'EIGRP', correct: true },
+        { text: 'OSPF', correct: false }
+    ]
+},
+{
+    id: 79,
+    type: 'multiple',
+    text: 'Какие 2 фактора использует маршрутизатор EIGRP, чтобы определить, соответствует ли маршрут к удаленной сети выполнимому условию и, следовательно, свободен ли он от петель? (Выберите два варианта)',
+    options: [
+        { text: 'Маршрут-преемник на соседнем маршрутизаторе', correct: false },
+        { text: 'Допустимое расстояние на локальном маршрутизаторе', correct: true },
+        { text: 'Возможный маршрут-преемник на удаленном маршрутизаторе', correct: false },
+        { text: 'Сообщаемое расстояние на соседнем маршрутизаторе', correct: true },
+        { text: 'Административное расстояние на удаленном маршрутизаторе', correct: false }
+    ]
+},
+{
+    id: 80,
+    type: 'single',
+    text: 'Что хранится в таблице топологии EIGRP?',
+    options: [
+        { text: 'Идентификатор области всех соседей', correct: false },
+        { text: 'Все маршруты, полученные от соседей', correct: true },
+        { text: 'Состояние всех каналов в сети', correct: false },
+        { text: 'Количество переходов ко всем сетям', correct: false }
+    ]
+},
+{
+    id: 81,
+    type: 'multiple',
+    text: 'Новый сетевой администратор хочет проверить метрики, используемые EIGRP на устройстве Cisco. Какие две метрики EIGRP измеряются с использованием статических значений на устройстве Cisco? (Выберите два варианта)',
+    options: [
+        { text: 'MTU', correct: false },
+        { text: 'Bandwidth', correct: true },
+        { text: 'Load', correct: false },
+        { text: 'Reliability', correct: false },
+        { text: 'Delay', correct: true }
+    ]
+},
+{
+    id: 82,
+    type: 'single',
+    text: 'Какая таблица используется EIGRP для хранения всех маршрутов, полученных от соседей EIGRP?',
+    options: [
+        { text: 'Таблица соседей', correct: false },
+        { text: 'Таблица маршрутизации', correct: false },
+        { text: 'Таблица смежности', correct: false },
+        { text: 'Таблица топологии', correct: true }
+    ]
+},
+{
+    id: 83,
+    type: 'single',
+    text: 'Какой протокол маршрутизации использует информацию о состоянии канала для построения карты топологии для расчета наилучшего пути до каждой сети назначения?',
+    options: [
+        { text: 'RIPng', correct: false },
+        { text: 'RIP', correct: false },
+        { text: 'OSPF', correct: true },
+        { text: 'EIGRP', correct: false }
+    ]
+},
+{
+    id: 84,
+    type: 'single',
+    text: 'Администратор вводит команду router eigrp 100 на маршрутизаторе. Для чего используется число 100?',
+    options: [
+        { text: 'Как количество соседей, поддерживаемых этим маршрутизатором', correct: false },
+        { text: 'Как продолжительность времени, в течение которого этот маршрутизатор будет ожидать приема приветственных пакетов от соседнего узла', correct: false },
+        { text: 'Как номер автономной системы', correct: true },
+        { text: 'Как максимальная пропускная способность самого быстрого интерфейса на маршрутизаторе', correct: false }
+    ]
+},
+{
+    id: 85,
+    type: 'single',
+    text: 'Какой MAC-адрес назначения используется при инкапсуляции многоадресного пакета EIGRP в кадр Ethernet?',
+    options: [
+        { text: '01-00-5E-00-00-10', correct: false },
+        { text: '01-00-5E-00-00-0A', correct: true },
+        { text: '01-00-5E-00-00-0B', correct: false },
+        { text: '01-00-5E-00-00-09', correct: false }
+    ]
+},
+{
+    id: 86,
+    type: 'input',
+    text: 'Заполните пробел. Используйте аббревиатуру. EIGRP использует протокол ___ для доставки пакетов EIGRP соседям.',
+    correctAnswer: 'RTP',
+    caseSensitive: false
+},
+{
+    id: 87,
+    type: 'single',
+    text: 'Какую команду или команды необходимо ввести на последовательном интерфейсе маршрутизатора Cisco, чтобы восстановить значение пропускной способности по умолчанию для этого конкретного интерфейса маршрутизатора?',
+    options: [
+        { text: 'no bandwidth', correct: true },
+        { text: 'copy running-config startup-config <br> reload', correct: false },
+        { text: 'bandwidth 1500', correct: false },
+        { text: 'shutdown<br>no shutdown', correct: false }
+    ]
+},
+{
+    id: 88,
+    type: 'single',
+    text: 'Если все Ethernet-интерфейсы маршрутизатора в сети настроены на использование таймеров EIGRP по умолчанию, как долго маршрутизатор будет ждать получения пакета EIGRP от своего соседа прежде чем объявить его недоступным?',
+    options: [
+        { text: '10 секунд', correct: false },
+        { text: '30 секунд', correct: false },
+        { text: '15 секунд', correct: true },
+        { text: '20 секунд', correct: false }
+    ]
+},
+{
+    id: 89,
+    type: 'single',
+    text: 'В чем разница между протоколами внутренней и внешней маршрутизации?',
+    options: [
+        { text: 'Протоколы внешней маршрутизации используются для администрирования одной автономной системы. Протоколы внутренней маршрутизации используются для администрирования нескольких доменов', correct: false },
+        { text: 'Протоколы внутренней маршрутизации используются для маршрутизации в Интернете. Протоколы внешней маршрутизации используются внутри организаций', correct: false },
+        { text: 'Протоколы внутренней маршрутизации используются для связи внутри одной автономной системы. Протоколы внешней маршрутизации используются для связи между несколькими автономными системами', correct: true },
+        { text: 'Протоколы внешней маршрутизации используются только крупными интернет-провайдерами. Протоколы внутренней маршрутизации используются небольшими интернет-провайдерами', correct: false }
+    ]
+},
+{
+    id: 90,
+    type: 'single',
+    text: 'Какое утверждение описывает доставку пакетов обновления EIGRP?',
+    options: [
+        { text: 'EIGRP отправляет все пакеты обновлений через многоадресную рассылку', correct: false },
+        { text: 'Для отправки всех пакетов обновления EIGRP использует надежный протокол доставки', correct: true },
+        { text: 'EIGRP отправляет все пакеты обновления через одноадресную рассылку', correct: false },
+        { text: 'EIGRP использует UDP для отправки всех пакетов обновления', correct: false }
+    ]
+},
+{
+    id: 91,
+    type: 'multiple',
+    text: 'Веса каких трех показателей устанавливаются равными нулю по умолчанию при расчете метрики в EIGRP? (Выберите три варианта)',
+    options: [
+        { text: 'K5', correct: true },
+        { text: 'K4', correct: true },
+        { text: 'K6', correct: false },
+        { text: 'K3', correct: false },
+        { text: 'K1', correct: false },
+        { text: 'K2', correct: true }
+    ]
+},
+{
+    id: 92,
+    type: 'single',
+    text: 'Какова цель использования протоколозависимых модулей в EIGRP?',
+    options: [
+        { text: 'Для использования разных транспортных протоколов для разных пакетов', correct: false },
+        { text: 'Для обеспечения маршрутизации различных протоколов сетевого уровня', correct: true },
+        { text: 'Для идентификации различных протоколов прикладного уровня', correct: false },
+        { text: 'Для описания различных процессов маршрутизации', correct: false }
+    ]
+},
+{
+    id: 93,
+    type: 'multiple',
+    text: 'Какие два типа пакетов EIGRP отправляются с ненадежной доставкой? (Выберите два варианта)',
+    options: [
+        { text: 'Query', correct: false },
+        { text: 'Reply', correct: false },
+        { text: 'Hello', correct: true },
+        { text: 'Update', correct: false },
+        { text: 'Acknowledgment', correct: true }
+    ]
+},
+{
+    id: 94,
+    type: 'single',
+    text: 'Сетевой администратор хочет проверить значения задержки по умолчанию для интерфейсов на маршрутизаторе с поддержкой EIGRP. Какая команда выведет эти значения?',
+    options: [
+        { text: 'show ip protocols', correct: false },
+        { text: 'show ip route', correct: false },
+        { text: 'show running-config', correct: false },
+        { text: 'show interfaces', correct: true }
+    ]
+},
+{
+    id: 95,
+    type: 'single',
+    text: 'В контексте протоколов маршрутизации, что является определением времени сходимости?',
+    options: [
+        { text: 'Количество времени, необходимое сетевому администратору для настройки протокола маршрутизации в сети малого и среднего размера', correct: false },
+        { text: 'Мера сложности настройки протокола', correct: false },
+        { text: 'Возможность передачи данных, видео и голоса по одним и тем же каналам', correct: false },
+        { text: 'Время, в течение которого таблицы маршрутизации достигают согласованного состояния после изменения топологии', correct: true }
+    ]
+},
+{
+    id: 96,
+    type: 'matching',
+    text: 'Сопоставьте правильную версию EIGRP с функциями EIGRP. (Используются не все варианты)',
+    pairs: [
+        { question: 'EIGRP только для IPv6', answer: 'Адрес источника сообщений EIGRP является локальным адресом канала' },
+        { question: 'EIGRP для IPv4 и EIGRP для IPv6', answer: 'Использует 32-битный идентификатор маршрутизатора' },
+        { question: 'EIGRP только для IPv4', answer: 'Адрес источника сообщений EIGRP является маршрутизируемым адресом' }
+    ],
+    extraAnswers: [
+        'Использует 128-битный идентификатор маршрутизатора',
+        'Требует двойного стека протоколов',
+        'Работает только через туннели IPv6'
+    ]
+},
+{
+    id: 97,
+    type: 'matching',
+    text: 'Упорядочите приоритет, с которым маршрутизатор EIGRP выбирает идентификатор маршрутизатора. (Используются не все варианты)',
+    pairs: [
+        {question: 'Первый', answer: 'Команда eigrp router-id'},
+        {question: 'Второй', answer:'Самый большой IPv4-адрес на loopback-интерфейсах'}, 
+        {question: 'Третий', answer:'Самый большой IPv4-адрес на активных физических интерфейсах'}
+    ],
+    extraAnswers: [
+        'Самый маленький IPv4-адрес на loopback-интерфейсах',
+        'Случайно сгенерированное значение',
+        'Мак адрес маршрутизатора'
+    ]
+},
+{
+    id: 98,
+    type: 'single',
+    text: 'Какой протокол динамической маршрутизации был разработан в качестве протокола внешнего шлюза для соединения различных интернет-провайдеров?',
+    options: [
+        { text: 'BGP', correct: true },
+        { text: 'EIGRP', correct: false },
+        { text: 'OSPF', correct: false },
+        { text: 'RIP', correct: false }
+    ]
+},
+{
+    id: 99,
+    type: 'multiple',
+    text: 'Какие два протокола являются протоколами маршрутизации по состоянию канала? (Выберите два варианта)',
+    options: [
+        { text: 'RIP', correct: false },
+        { text: 'IGP', correct: false },
+        { text: 'IS-IS', correct: true },
+        { text: 'BGP', correct: false },
+        { text: 'OSPF', correct: true },
+        { text: 'EIGRP', correct: false }
+    ]
+},
+{
+    id: 100,
+    type: 'multiple',
+    text: 'Для каких двух целей используются протоколы динамической маршрутизации? (Выберите два варианта)',
+    options: [
+        { text: 'Предоставление маршрута по умолчанию хостам сети', correct: false },
+        { text: 'Обеспечение безопасности сети', correct: false },
+        { text: 'Обнаружение удаленных сетей', correct: true },
+        { text: 'Уменьшение сетевого трафика', correct: false },
+        { text: 'Выбор лучшего пути к сетям назначения', correct: true }
+    ]
+},
+{
+    id: 101,
+    type: 'single',
+    text: 'Что определяется в коде операции заголовка пакета EIGRP?',
+    options: [
+        { text: 'Таймер удержания EIGRP, согласованный с соседом', correct: false },
+        { text: 'Метрики автономной системы EIGRP', correct: false },
+        { text: 'Сумма задержек EIGRP от источника к получателю', correct: false },
+        { text: 'Тип сообщения EIGRP, отправляемого или получаемого от соседа', correct: true }
+    ]
+}
 ];
 
 function getImagePath(imageName) {
