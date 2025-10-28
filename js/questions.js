@@ -1392,6 +1392,259 @@ const sampleQuestions = [
         { text: '10%', correct: false },
         { text: '50%', correct: true }
     ]
+},
+{
+    id: 122,
+    type: 'single',
+    text: 'При каком сценарии использование автоматического суммирования EIGRP приведет к несогласованной маршрутизации в сети?',
+    options: [
+        { text: 'Когда маршрутизаторы в сети IPv4 подключены к несмежным сетям с включенным автоматическим суммированием', correct: true },
+        { text: 'Когда нет общей подсети между соседними маршрутизаторами', correct: false },
+        { text: 'Когда между соседними маршрутизаторами не установлена смежность', correct: false },
+        { text: 'Когда маршрутизаторы EIGRP в сети IPv4 имеют несовпадающие номера AS', correct: false }
+    ]
+},
+{
+    id: 123,
+    type: 'single',
+    text: 'Какова цель маршрута Null0 в таблице маршрутизации?',
+    options: [
+        { text: 'Выполнение роли шлюза последней надежды', correct: false },
+        { text: 'Предотвращение отправки маршрутизатором пакетов EIGRP', correct: false },
+        { text: 'Предотвращение петель маршрутизации', correct: true },
+        { text: 'Перераспределение внешних маршрутов в EIGRP', correct: false }
+    ]
+},
+{
+    id: 124,
+    type: 'input',
+    text: 'Заполните пробел. Команда ___ заставляет маршрутизатор EIGRP прекратить отправку пакетов приветствия через указанный интерфейс.',
+    correctAnswer: 'passive-interface',
+    caseSensitive: false
+},
+{
+    id: 125,
+    type: 'multiple',
+    text: 'Какие два компонента LSP позволяют маршрутизатору OSPF определить, содержит ли полученный LSP более новую информацию, чем та, что содержится в текущей базе данных состояния каналов маршрутизатора OSPF? (Выберите два варианта)',
+    options: [
+        { text: 'Приветствия', correct: false },
+        { text: 'Подтверждения', correct: false },
+        { text: 'Информация об устаревании записи', correct: true },
+        { text: 'Запрос', correct: false },
+        { text: 'Порядковые номера', correct: true }
+    ]
+},
+{
+    id: 126,
+    type: 'input',
+    text: 'Заполните пробел. ОSPF использует ___ в качестве метрики.',
+    correctAnswer: 'стоимость',
+    caseSensitive: false
+},
+{
+    id: 127,
+    type: 'single',
+    text: 'Что произойдет, если два маршрутизатора с состоянием канала перестанут получать пакеты приветствия от соседей?',
+    options: [
+        { text: 'Они будут флудить свои таблицы базы данных друг другу', correct: false },
+        { text: 'Они создают маршрут по умолчанию к соседнему маршрутизатору', correct: false },
+        { text: 'Они считают, что сосед недостижим и смежность нарушена', correct: true },
+        { text: 'Они продолжают работать в обычном режиме и могут обмениваться пакетами', correct: false }
+    ]
+},
+{
+    id: 128,
+    type: 'multiple',
+    text: 'Что является функциями протокола маршрутизации OSPF? (Выберите два варианта)',
+    options: [
+        { text: 'Автоматически суммирует сети на границах классов', correct: false },
+        { text: 'Используется в основном как протокол внешней маршрутизации', correct: false },
+        { text: 'Использует алгоритм Дейкстры для построения дерева SPF', correct: true },
+        { text: 'Вычисляет свою метрику, используя пропускную способность', correct: true },
+        { text: 'Имеет административное расстояние 100', correct: false }
+    ]
+},
+{
+    id: 129,
+    type: 'single',
+    text: 'Какой протокол маршрутизации предназначен для масштабирования больших иерархических сетей с использованием областей?',
+    options: [
+        { text: 'BGP', correct: false },
+        { text: 'EIGRP', correct: false },
+        { text: 'RIP', correct: false },
+        { text: 'OSPF', correct: true }
+    ]
+},
+{
+    id: 130,
+    type: 'single',
+    text: 'Что используется для создания таблицы соседей OSPF?',
+    options: [
+        { text: 'База данных состояния каналов', correct: false },
+        { text: 'Таблица маршрутизации', correct: false },
+        { text: 'База данных смежности', correct: true },
+        { text: 'База данных пересылки', correct: false }
+    ]
+},
+{
+    id: 131,
+    type: 'single',
+    text: 'OSPFv3 для одной области включен на маршрутизаторе с помощью команды ipv6 router ospf 20. Какая команда активирует этот процесс OSPFv3 на интерфейсе этого маршрутизатора?',
+    options: [
+        { text: 'ipv6 ospf 0 area 20', correct: false },
+        { text: 'ipv6 ospf 20 area 0', correct: true },
+        { text: 'ipv6 ospf 20 area 20', correct: false },
+        { text: 'ipv6 ospf 0 area 0', correct: false }
+    ]
+},
+{
+    id: 132,
+    type: 'single',
+    text: 'Какой пакет OSPF содержит различные типы объявлений состояния канала?',
+    options: [
+        { text: 'LSR', correct: false },
+        { text: 'DBD', correct: false },
+        { text: 'Hello', correct: false },
+        { text: 'LSAck', correct: false },
+        { text: 'LSU', correct: true }
+    ]
+},
+{
+    id: 133,
+    type: 'single',
+    text: 'Посмотрите на рисунок. В сети используется OSPF. Какой путь выберет OSPF для отправки пакетов данных из Net A в Net B?',
+    image: 'images/questions/4-133.jpg',
+    options: [
+        { text: 'R1, R3, R6, R7', correct: false },
+        { text: 'R1, R2, R5, R7', correct: false },
+        { text: 'R1, R3, R5, R6, R7', correct: false },
+        { text: 'R1, R4, R6, R7', correct: false },
+        { text: 'R1, R3, R5, R7', correct: true }
+    ]
+},
+{
+    id: 134,
+    type: 'single',
+    text: 'Что маршрутизатор OSPF предпочтет использовать в качестве идентификатора маршрутизатора в первую очередь?',
+    options: [
+        { text: 'Активный интерфейс с самым большим номером, участвующий в процессе маршрутизации из-за специально настроенного оператора сети', correct: false },
+        { text: 'Любой IP-адрес, настроенный с помощью команды router-id', correct: true },
+        { text: 'Наивысший IP-адрес, настроенный на loopback-интерфейсе маршрутизатора', correct: false },
+        { text: 'Самый большой IP-адрес активного интерфейса, настроенный на маршрутизаторе', correct: false }
+    ]
+},
+{
+    id: 135,
+    type: 'single',
+    text: 'Какой компонент OSPF идентичен во всех маршрутизаторах в области OSPF после конвергенции?',
+    options: [
+        { text: 'База данных состояния каналов', correct: true },
+        { text: 'Таблица маршрутизации', correct: false },
+        { text: 'SPF-дерево', correct: false },
+        { text: 'База данных смежности', correct: false }
+    ]
+},
+{
+    id: 136,
+    type: 'single',
+    text: 'В чем заключается недостаток развертывания OSPF в среде маршрутизации с одной большой областью?',
+    options: [
+        { text: 'OSPF использует чрезмерную лавинную рассылку LSP', correct: true },
+        { text: 'OSPF использует обновления многоадресной передачи', correct: false },
+        { text: 'OSPF использует показатели полосы пропускания и задержки для вычисления метрики', correct: false },
+        { text: 'OSPF хранит база данных топологии резервных маршрутов', correct: false }
+    ]
+},
+{
+    id: 137,
+    type: 'single',
+    text: 'С помощью какой команды можно проверить, что маршрутизатор, на котором работает OSPFv3, сформировал смежность с другими маршрутизаторами в своей области OSPF?',
+    options: [
+        { text: 'show ipv6 interface brief', correct: false },
+        { text: 'show ipv6 ospf neighbor', correct: true },
+        { text: 'show ipv6 route ospf', correct: false },
+        { text: 'show running-configuration', correct: false }
+    ]
+},
+{
+    id: 138,
+    type: 'multiple',
+    text: 'Каковы две причины, по которым два маршрутизатора не смогут сформировать смежность OSPFv2? (Выберите два варианта)',
+    options: [
+        { text: 'Один маршрутизатор подключается к порту FastEthernet на коммутаторе, а другой подключается к порту GigabitEthernet', correct: false },
+        { text: 'Несоответствие масок подсети на интерфейсах', correct: true },
+        { text: 'Используются частные IP-адреса на интерфейсах', correct: false },
+        { text: 'Настроены несоответствующие таймеры OSPF Hello или Dead', correct: true },
+        { text: 'Используется несовпадающая версия Cisco IOS', correct: false }
+    ]
+},
+{
+    id: 139,
+    type: 'multiple',
+    text: 'Для каких двух целей используется идентификатор маршрутизатора OSPF? (Выберите два варианта)',
+    options: [
+        { text: 'Для уникальной идентификации маршрутизатора в домене OSPF', correct: true },
+        { text: 'Для облегчения перехода состояния соседа OSPF в состояние Full', correct: false },
+        { text: 'Для облегчения установления сетевой конвергенции', correct: false },
+        { text: 'Чтобы включить алгоритм SPF для определения пути с наименьшей стоимостью к удаленным сетям', correct: false },
+        { text: 'Для облегчения участия маршрутизатора в выборах назначенного маршрутизатора', correct: true }
+    ]
+},
+{
+    id: 140,
+    type: 'multiple',
+    text: 'Какие два протокола являются протоколами маршрутизации по состоянию канала? (Выберите два варианта)',
+    options: [
+        { text: 'IS-IS', correct: true },
+        { text: 'EIGRP', correct: false },
+        { text: 'BGP', correct: false },
+        { text: 'RIP', correct: false },
+        { text: 'OSPF', correct: true }
+    ]
+},
+{
+    id: 141,
+    type: 'single',
+    text: 'Какова стоимость по умолчанию для любого канала OSPF с пропускной способностью 100 Мбит/с или выше?',
+    options: [
+        { text: '1', correct: true },
+        { text: '100', correct: false },
+        { text: '100000000', correct: false },
+        { text: '10000', correct: false }
+    ]
+},
+{
+    id: 142,
+    type: 'single',
+    text: 'Что происходит сразу после того, как два маршрутизатора OSPF обменялись приветственными пакетами и сформировали отношение смежности?',
+    options: [
+        { text: 'Они запрашивают дополнительную информацию о своих базах данных', correct: false },
+        { text: 'Они согласовывают процесс выборов, если они находятся в сети с множественным доступом', correct: false },
+        { text: 'Они обмениваются сокращенными списками своих LSDB', correct: true },
+        { text: 'Они обмениваются пакетами DBD, чтобы объявить такие параметры, как Hello и Dead интервалы', correct: false }
+    ]
+},
+{
+    id: 143,
+    type: 'single',
+    text: 'Какую команду следует использовать для проверки идентификатора процесса OSPF, идентификатора маршрутизатора, сетей, которые маршрутизатор объявляет, соседей, от которых маршрутизатор получает обновления, и административного расстояния по умолчанию?',
+    options: [
+        { text: 'show ip ospf interface', correct: false },
+        { text: 'show ip protocols', correct: true },
+        { text: 'show ip ospf', correct: false },
+        { text: 'show ip ospf neighbor', correct: false }
+    ]
+},
+{
+    id: 144,
+    type: 'single',
+    text: 'Какой первый шаг предпринимает недавно настроенный маршрутизатор OSPF в процессе конвергенции?',
+    options: [
+        { text: 'Он узнает о непосредственно подключенных каналах в активном состоянии', correct: true },
+        { text: 'Он рассылает пакеты LSP соседним маршрутизаторам', correct: false },
+        { text: 'Он обменивается приветственными сообщениями с соседним маршрутизатором', correct: false },
+        { text: 'Создает топологическую базу данных', correct: false }
+    ]
 }
 ];
 
