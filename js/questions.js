@@ -1513,7 +1513,7 @@ const sampleQuestions = [
     id: 133,
     type: 'single',
     text: 'Посмотрите на рисунок. В сети используется OSPF. Какой путь выберет OSPF для отправки пакетов данных из Net A в Net B?',
-    image: 'images/questions/4-133.jpg',
+    image: 'images/questions/5-133.jpg',
     options: [
         { text: 'R1, R3, R6, R7', correct: false },
         { text: 'R1, R2, R5, R7', correct: false },
